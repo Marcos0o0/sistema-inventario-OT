@@ -116,7 +116,7 @@ Movimientos Inventario:
 ## 8. Checklist Mínimo
 
 - [✔] Grupo formado (3-4 integrantes) y listado en README del repo.
-- [ ] REQUERIMIENTOS.md completo.
+- [✔] REQUERIMIENTOS.md completo.
 - [ ] Issues creados y asignados a integrantes.
 - [✔] Branching mínimo: main y develop presentes.
 - [ ] Al menos 5 commits descriptivos en develop.
