@@ -2,7 +2,9 @@
 
 ## 1. Descripción del Cliente y Problema Principal
 
+El cliente es una pequeña empresa que maneja un negocio de reparaciones a vehiculos y venta de repuestos automotrices. Actualmente, el dueño lleva un registro manual de inventarios y de las órdenes de trabajo que realiza. El problema principal es que este proceso manual es propenso a errores, consume mucho tiempo y no permite un control eficiente sobre el inventario ni las órdenes de trabajo, lo que podría llevar a pérdidas de productos o a desorganización en el flujo de trabajo.
 
+La necesidad es crear un sistema digital que automatice estos registros y permita un control más preciso y rápido tanto del inventario como de las órdenes de trabajo.
 
 ## 2. Lista de Usuarios del Sistema
 
