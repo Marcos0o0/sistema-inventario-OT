@@ -18,6 +18,7 @@ Principal y único rol del sistema y que permisos tiene:
   - Crear, e ditar y eliminar productos.
   - Ver reportes financieros completos.
   - Gestionar el inventario y crear ordenes de trabajo.
+  - Ver historial de ordenes
 
 ## 4. Funciones Indispensables por Perfil (Lista Priorizada)
 
