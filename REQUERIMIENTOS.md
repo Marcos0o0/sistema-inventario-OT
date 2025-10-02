@@ -72,19 +72,46 @@ Movimientos Inventario:
 ## 6. Lista de Requisitos Funcionales y No Funcionales
 
 ### Requisitos Funcionales:
-- 
+- El sistema debe permitir registrar productos en el inventario.
+- El sistema debe permitir ver la lista de productos y sus cantidades.
+- El sistema debe permitir registrar nuevas órdenes de trabajo.
+- El sistema debe permitir cambiar el estado de una orden (pendiente, en progreso, completada).
+- El sistema debe permitir ver el historial de órdenes de trabajo.
+- El sistema debe permitir asignar productos a una orden de trabajo.
+- El sistema debe permitir editar o eliminar productos y órdenes.
 
 ### Requisitos No Funcionales:
-- 
+- El sistema debe ser fácil de usar para personas no técnicas (interfaz intuitiva).
+- El sistema debe guardar la información de forma segura (persistencia de datos).
+- El sistema debe estar disponible desde cualquier computador moderno.
+- El sistema debe cargar las páginas en menos de 2 segundos.
+- El sistema debe permitir hacer respaldos/exportar datos (en versiones futuras).
 
-## 7. Definición del MVP (Qué Incluye / Qué Queda para Futuras Versiones)
+## 7. Definición del MVP
 
-### Ejemplo:
-**MVP (Minimum Viable Product)**:
-- 
+### MVP (Minimum Viable Product):
 
-**Futuras versiones**:
-- 
+- Autenticación de usuarios mediante JWT.
+- Rol de administrador con acceso completo a productos y órdenes.
+- API REST con endpoints para:
+  - Crear, editar, eliminar y listar productos.
+  - Crear y listar órdenes de trabajo.
+  - Cambiar estado de órdenes.
+- MongoDB como base de datos para persistencia de información.
+- Redis para cachear la ruta `GET /products`.
+- Proyecto usando Docker y docker-compose.
+- README con instrucciones para ejecución con `docker compose`.
+
+### Futuras versiones:
+
+- Implementación de roles adicionales: Cliente y Vendedor.
+- Registro y visualización de clientes.
+- Asignación de productos a órdenes (actualmente básico).
+- Historial de movimientos del inventario.
+- Reportes automáticos (ventas, productos más usados, etc.).
+- Sistema de notificaciones o alertas (por ejemplo, stock bajo).
+- Interfaz gráfica web o móvil.
+- Sistema de backup/exportación de datos.
 
 ## 8. Checklist Mínimo
 
