@@ -34,9 +34,39 @@ Lista las funciones más importantes para cada perfil. Ordena las funciones de m
 
 ## 5. Datos Básicos a Almacenar (Entidades y Atributos)
 
-Define las entidades y los atributos que el sistema almacenará.
+Producto:
+ - ID
+ - Nombre
+ - Precio
+ - Stock
+ - Categoría
+ - Descripción
+ - Proveedor
+ - Fecha ingreso
 
+Orden de trabajo:
+ - ID
+ - Fecha de emisión
+ - Cliente
+ - Descripción del trabajo
+ - Estado
+ - Fecha de entrega estimada
+ - Fecha de finalización
+ - Precio
 
+Cliente:
+ - ID
+ - Nombre completo
+ - Teléfono
+ - Correo
+
+Movimientos Inventario:
+ - ID
+ - Producto
+ - Cantidad
+ - Tipo de movimiento
+ - Fecha de movimiento
+ - Descripción
 
 ## 6. Lista de Requisitos Funcionales y No Funcionales
 
