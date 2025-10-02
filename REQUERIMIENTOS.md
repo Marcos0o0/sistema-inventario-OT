@@ -8,26 +8,16 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 
 ## 2. Lista de Usuarios del Sistema
 
-- 
+- Administrador
 
-## 3. Tipos de Usuarios y Perfiles (Roles) con Permisos por Rol
+## 3. Usuarios y Permisos según rol
 
-Lista los roles y qué permisos tiene cada uno:
-
-### Ejemplo:
+Principal y único rol del sistema y que permisos tiene:
 
 - **Administrador**:
-  - Crear, editar y eliminar productos.
-  - Ver reportes completos.
-  - Gestionar usuarios y asignar roles.
-  
-- **Usuario/Cliente**:
-  - Navegar y comprar productos.
-  - Ver su historial de compras.
-
-- **Vendedor**:
-  - Gestionar su propio inventario.
-  - Ver ventas y generar reportes.
+  - Crear, e ditar y eliminar productos.
+  - Ver reportes financieros completos.
+  - Gestionar el inventario y crear ordenes de trabajo.
 
 ## 4. Funciones Indispensables por Perfil (Lista Priorizada)
 
