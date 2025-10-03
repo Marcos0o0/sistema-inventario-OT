@@ -180,7 +180,24 @@ Movimientos Inventario:
 5. Logs y auditoría de acciones.
 6. Soporte multidioma y personalización de interfaz.
 
-## 10. Checklist Mínimo
+## 10. Flujos Principales (Resumen)
+
+### 1. Autenticación de Usuario
+Ingreso de credenciales → Validación → Credenciales correctas → Generar token JWT → Acceso concedido  
+Credenciales incorrectas → Mostrar error
+
+### 2. Gestión de Productos
+Crear producto → Completar formulario → Validar datos → Guardar en BD → Confirmación  
+Editar producto → Seleccionar producto → Modificar datos → Validar y guardar → Confirmación  
+Eliminar producto → Seleccionar producto → Verificar asociación → Confirmar eliminación → Eliminar → Confirmación
+
+### 3. Gestión de Órdenes de Trabajo
+Crear orden → Completar datos y cliente → Validar → Guardar orden (Pendiente) → Confirmación  
+Listar órdenes → Mostrar lista con estados  
+Cambiar estado → Seleccionar orden → Cambiar estado → Guardar → Confirmación  
+Asignar productos → Seleccionar orden → Añadir productos → Verificar stock → Actualizar inventario → Confirmación o error
+
+## 11. Checklist Mínimo
 
 - [✔] Grupo formado (3-4 integrantes) y listado en README del repo.
 - [✔] REQUERIMIENTOS.md completo.
