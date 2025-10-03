@@ -113,7 +113,7 @@ Movimientos Inventario:
 - Interfaz gráfica web o móvil.
 - Sistema de backup/exportación de datos.
 
-## 8.Lista Priorizada de Funcionalidades
+## 8. Lista Priorizada de Funcionalidades
 
 ### Prioridad Alta (Imprescindible para que el sistema funcione)
 
