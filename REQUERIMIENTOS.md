@@ -113,7 +113,75 @@ Movimientos Inventario:
 - Interfaz gráfica web o móvil.
 - Sistema de backup/exportación de datos.
 
-## 8. Checklist Mínimo
+## 8.Lista Priorizada de Funcionalidades
+
+### Prioridad Alta (Imprescindible para que el sistema funcione)
+
+1. Autenticación de usuarios (JWT)
+   - Seguridad básica para acceso restringido.
+
+2. Gestión de productos
+   - Crear, editar, eliminar y listar productos (CRUD completo).
+   - Visualizar stock actual de productos.
+
+3. Gestión de órdenes de trabajo
+   - Crear orden de trabajo (con datos del cliente, fecha, descripción, etc.).
+   - Listar todas las órdenes.
+   - Cambiar estado de orden (pendiente → en progreso → completada).
+
+4. Asignación básica de productos a órdenes de trabajo
+   - Asociar productos a una orden y disminuir stock automáticamente.
+
+5. Persistencia de datos en MongoDB
+   - Base de datos para guardar todos los registros.
+
+6. Uso de Redis para cachear productos
+   - Cachear la ruta `GET /products` para mejorar el rendimiento.
+
+7. Proyecto Dockerizado
+   - Uso de Docker y docker-compose para facilitar la ejecución del proyecto.
+
+---
+
+### Prioridad Media (Importante, pero puede esperar a después del MVP)
+
+1. Historial de órdenes de trabajo
+   - Ver órdenes pasadas con filtros por fecha o estado.
+
+2. Historial de movimientos de inventario
+   - Registrar cada entrada o salida con su motivo, cantidad y fecha.
+
+3. Gestión de clientes
+   - CRUD básico de clientes (Nombre, Teléfono, Correo).
+   - Relacionar clientes con las órdenes de trabajo.
+
+4. Interfaz gráfica mínima (web o móvil)
+   - Panel web básico para visualizar y operar el sistema.
+
+---
+
+### Prioridad Baja (Para futuras versiones, valor agregado)
+
+1. Reportes automáticos
+   - Ventas, productos más usados, ingresos por mes, etc.
+
+2. Sistema de alertas o notificaciones
+   - Por ejemplo, alerta de stock bajo o órdenes vencidas.
+
+3. Exportación de datos / Backups
+   - Descargar inventario u órdenes en formatos como CSV o Excel.
+
+4. Sistema multi-rol
+   - Incorporar roles adicionales como Vendedor o Cliente.
+
+5. Sistema de logs y auditoría
+   - Registrar quién hizo qué cambios y cuándo.
+
+6. Soporte multidioma o personalización de la interfaz
+   - Opciones para adaptar el sistema a distintos idiomas o necesidades visuales.
+
+
+## 9. Checklist Mínimo
 
 - [✔] Grupo formado (3-4 integrantes) y listado en README del repo.
 - [✔] REQUERIMIENTOS.md completo.
