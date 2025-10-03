@@ -69,7 +69,45 @@ Movimientos Inventario:
  - Fecha de movimiento
  - Descripción
 
-## 6. Lista de Requisitos Funcionales y No Funcionales
+## 6. Reglas del Negocio
+
+### 1. Usuarios y Roles
+- Solo existe el rol **Administrador** con acceso completo.
+- Solo el Administrador puede gestionar productos, órdenes y clientes.
+
+### 2. Productos e Inventario
+- Los productos deben contener: ID, nombre, precio, stock, categoría, proveedor y fecha de ingreso.
+- El stock no puede ser negativo.
+- Al asignar productos a una orden, el stock se descuenta automáticamente.
+- No se puede asignar más producto que el stock disponible.
+
+### 3. Órdenes de Trabajo
+- Cada orden tiene ID, cliente, descripción, fechas, estado y precio.
+- Estados posibles: Pendiente, En progreso, Completada.
+- Solo el Administrador puede cambiar el estado.
+- No se pueden eliminar órdenes en progreso o completadas.
+
+### 4. Clientes
+- Las órdenes deben estar asociadas a clientes registrados.
+- El Administrador puede crear, editar y eliminar clientes.
+
+### 5. Movimientos de Inventario
+- Todo cambio de stock debe registrarse con tipo, cantidad, fecha y descripción.
+- No se permiten movimientos que generen stock negativo.
+
+## 6. Seguridad y Persistencia
+- El acceso se controla mediante autenticación JWT.
+- La información se guarda en MongoDB.
+- Redis se usa para cachear la lista de productos.
+
+### 7. Usabilidad y Restricciones
+- La interfaz debe ser simple e intuitiva para usuarios no técnicos.
+- Se debe pedir confirmación para eliminar productos u órdenes.
+- El sistema debe estar disponible en PCs modernas.
+- Las respuestas deben ser rápidas (menos de 2 segundos).
+
+
+## 7. Lista de Requisitos Funcionales y No Funcionales
 
 ### Requisitos Funcionales:
 - El sistema debe permitir registrar productos en el inventario.
@@ -87,7 +125,7 @@ Movimientos Inventario:
 - El sistema debe cargar las páginas en menos de 2 segundos.
 - El sistema debe permitir hacer respaldos/exportar datos (en versiones futuras).
 
-## 7. Definición del MVP
+## 8. Definición del MVP
 
 ### MVP (Minimum Viable Product):
 
@@ -113,7 +151,7 @@ Movimientos Inventario:
 - Interfaz gráfica web o móvil.
 - Sistema de backup/exportación de datos.
 
-## 8. Lista Priorizada de Funcionalidades
+## 9. Lista Priorizada de Funcionalidades
 
 ### Prioridad Alta (Imprescindible para que el sistema funcione)
 
@@ -181,7 +219,7 @@ Movimientos Inventario:
    - Opciones para adaptar el sistema a distintos idiomas o necesidades visuales.
 
 
-## 9. Checklist Mínimo
+## 10. Checklist Mínimo
 
 - [✔] Grupo formado (3-4 integrantes) y listado en README del repo.
 - [✔] REQUERIMIENTOS.md completo.
