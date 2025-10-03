@@ -153,71 +153,32 @@ Movimientos Inventario:
 
 ## 9. Lista Priorizada de Funcionalidades
 
-### Prioridad Alta (Imprescindible para que el sistema funcione)
-
-1. Autenticación de usuarios (JWT)
-   - Seguridad básica para acceso restringido.
-
-2. Gestión de productos
-   - Crear, editar, eliminar y listar productos (CRUD completo).
-   - Visualizar stock actual de productos.
-
-3. Gestión de órdenes de trabajo
-   - Crear orden de trabajo (con datos del cliente, fecha, descripción, etc.).
-   - Listar todas las órdenes.
-   - Cambiar estado de orden (pendiente → en progreso → completada).
-
-4. Asignación básica de productos a órdenes de trabajo
-   - Asociar productos a una orden y disminuir stock automáticamente.
-
-5. Persistencia de datos en MongoDB
-   - Base de datos para guardar todos los registros.
-
-6. Uso de Redis para cachear productos
-   - Cachear la ruta `GET /products` para mejorar el rendimiento.
-
-7. Proyecto Dockerizado
-   - Uso de Docker y docker-compose para facilitar la ejecución del proyecto.
+### Prioridad Alta (Imprescindible para el MVP)
+1. Autenticación JWT para acceso seguro.
+2. Gestión completa de productos (crear, editar, eliminar, listar y stock).
+3. Gestión de órdenes (crear, listar y cambiar estado).
+4. Asignar productos a órdenes y descontar stock.
+5. Persistencia en MongoDB.
+6. Cacheo de productos con Redis.
+7. Proyecto dockerizado para fácil despliegue.
 
 ---
 
-### Prioridad Media (Importante, pero puede esperar a después del MVP)
-
-1. Historial de órdenes de trabajo
-   - Ver órdenes pasadas con filtros por fecha o estado.
-
-2. Historial de movimientos de inventario
-   - Registrar cada entrada o salida con su motivo, cantidad y fecha.
-
-3. Gestión de clientes
-   - CRUD básico de clientes (Nombre, Teléfono, Correo).
-   - Relacionar clientes con las órdenes de trabajo.
-
-4. Interfaz gráfica mínima (web o móvil)
-   - Panel web básico para visualizar y operar el sistema.
+### Prioridad Media (Para después del MVP)
+1. Historial y filtros de órdenes de trabajo.
+2. Registro de movimientos de inventario.
+3. Gestión básica de clientes y relación con órdenes.
+4. Interfaz gráfica mínima (web o móvil).
 
 ---
 
-### Prioridad Baja (Para futuras versiones, valor agregado)
-
-1. Reportes automáticos
-   - Ventas, productos más usados, ingresos por mes, etc.
-
-2. Sistema de alertas o notificaciones
-   - Por ejemplo, alerta de stock bajo o órdenes vencidas.
-
-3. Exportación de datos / Backups
-   - Descargar inventario u órdenes en formatos como CSV o Excel.
-
-4. Sistema multi-rol
-   - Incorporar roles adicionales como Vendedor o Cliente.
-
-5. Sistema de logs y auditoría
-   - Registrar quién hizo qué cambios y cuándo.
-
-6. Soporte multidioma o personalización de la interfaz
-   - Opciones para adaptar el sistema a distintos idiomas o necesidades visuales.
-
+### Prioridad Baja (Futuras mejoras)
+1. Reportes automáticos (ventas, productos más usados, etc.).
+2. Alertas y notificaciones (stock bajo, órdenes vencidas).
+3. Exportación de datos y backups.
+4. Roles adicionales (Vendedor, Cliente).
+5. Logs y auditoría de acciones.
+6. Soporte multidioma y personalización de interfaz.
 
 ## 10. Checklist Mínimo
 
