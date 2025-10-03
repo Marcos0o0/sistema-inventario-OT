@@ -6,11 +6,46 @@ El cliente es una pequeña empresa que maneja un negocio de reparaciones a vehí
 
 La necesidad es crear un sistema digital que automatice estos registros y permita un control más preciso y rápido tanto del inventario como de las órdenes de trabajo.
 
-## 2. Lista de Usuarios del Sistema
+## 2. Plazo y Alcance del Proyecto
+
+### Plazo de Desarrollo:
+**4 semanas** para completar el MVP funcional.
+
+### Alcance del Proyecto:
+
+**Incluido en el MVP:**
+- Sistema de autenticación con JWT.
+- Gestión completa de productos (crear, editar, eliminar, listar, buscar).
+- Gestión completa de clientes (crear, editar, eliminar, listar, buscar).
+- Gestión de órdenes de trabajo (crear, listar, cambiar estado).
+- Asignación de productos a órdenes con descuento automático de stock.
+- Registro automático de movimientos de inventario.
+- Validaciones de reglas de negocio.
+- Base de datos MongoDB.
+- Cache con Redis para productos.
+- Proyecto dockerizado con documentación.
+
+**Excluido del MVP (versiones futuras):**
+- Interfaz gráfica web o móvil.
+- Roles adicionales (Cliente, Vendedor).
+- Reportes y dashboards con gráficos.
+- Sistema de alertas y notificaciones.
+- Gestión de proveedores.
+- Sistema de facturación.
+- Backup automático y exportación de datos.
+
+### Criterios de Éxito:
+- El sistema permite gestionar productos, clientes y órdenes de forma completa.
+- El stock se actualiza automáticamente al asignar productos a órdenes.
+- Todas las reglas de negocio se validan correctamente.
+- El proyecto se ejecuta exitosamente con docker-compose.
+- La documentación permite a cualquier desarrollador levantar el proyecto.
+
+## 3. Lista de Usuarios del Sistema
 
 - Administrador
 
-## 3. Usuarios y Permisos según Rol
+## 4. Usuarios y Permisos según Rol
 
 **Administrador:**
 - Crear, editar y eliminar productos.
@@ -19,7 +54,7 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 - Gestionar clientes del sistema.
 - Asignar productos a órdenes de trabajo.
 
-## 4. Funciones Indispensables por Perfil
+## 5. Funciones Indispensables por Perfil
 
 **Administrador (orden de prioridad):**
 1. Autenticación y acceso seguro al sistema.
@@ -30,7 +65,7 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 6. Visualización de historial de órdenes.
 7. Búsqueda y filtrado de productos, órdenes y clientes.
 
-## 5. Datos Básicos a Almacenar
+## 6. Datos Básicos a Almacenar
 
 ### Producto:
 - ID
@@ -76,25 +111,25 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 - Fecha de movimiento
 - Descripción
 
-## 6. Reglas del Negocio
+## 7. Reglas del Negocio
 
-### 6.1. Usuarios y Roles
+### 7.1. Usuarios y Roles
 - Solo existe el rol de Administrador con acceso completo al sistema.
 - El acceso requiere autenticación mediante credenciales válidas con JWT.
 
-### 6.2. Productos e Inventario
+### 7.2. Productos e Inventario
 - El precio de los productos debe ser mayor a cero.
 - El stock no puede ser negativo en ninguna circunstancia.
 - Al asignar productos a una orden, el stock se descuenta automáticamente.
 - No se puede asignar más cantidad de producto que el stock disponible.
 - Toda modificación de stock debe quedar registrada en Movimientos de Inventario.
 
-### 6.3. Clientes
+### 7.3. Clientes
 - Todas las órdenes de trabajo deben estar asociadas a un cliente registrado.
 - Los datos obligatorios del cliente son: nombre completo y teléfono.
 - No se puede eliminar un cliente que tenga órdenes de trabajo asociadas.
 
-### 6.4. Órdenes de Trabajo
+### 7.4. Órdenes de Trabajo
 - Los estados posibles son: Pendiente, En progreso, Completada.
 - Toda orden nueva se crea en estado Pendiente.
 - Solo el Administrador puede cambiar el estado de una orden.
@@ -103,36 +138,35 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 - La fecha de finalización no puede ser anterior a la fecha de emisión.
 - Los datos del vehículo (marca, modelo, año, patente) son obligatorios.
 
-### 6.5. Detalle de Órdenes
+### 7.5. Detalle de Órdenes
 - Cada producto asignado a una orden debe registrarse en Detalle de Orden.
 - Se debe guardar el precio unitario del producto al momento de asignarlo.
 - La cantidad asignada debe ser mayor a cero.
 - No se puede asignar un producto con stock insuficiente.
 
-### 6.6. Movimientos de Inventario
+### 7.6. Movimientos de Inventario
 - Todo cambio de stock debe registrarse con tipo, cantidad, fecha y descripción.
 - Los tipos de movimiento válidos son: Entrada, Salida, Ajuste.
 - No se permiten movimientos que generen stock negativo.
 
-### 6.7. Seguridad y Persistencia
+### 7.7. Seguridad y Persistencia
 - El acceso se controla mediante autenticación JWT con tiempo de expiración.
 - Las contraseñas deben almacenarse encriptadas.
 - La información se guarda en MongoDB.
 - Redis se utiliza para cachear la lista de productos.
 
-### 6.8. Usabilidad
-- La interfaz debe ser simple e intuitiva para usuarios no técnicos.
-- Se debe solicitar confirmación antes de eliminar productos, órdenes o clientes.
+### 7.8. Usabilidad
+- La interfaz API debe tener respuestas claras y descriptivas.
+- Se deben retornar códigos HTTP apropiados para cada operación.
 - Las respuestas del sistema deben ser rápidas (menos de 2 segundos).
 
-## 7. Requisitos Funcionales y No Funcionales
+## 8. Requisitos Funcionales y No Funcionales
 
 ### Requisitos Funcionales:
 
 **Gestión de Productos:**
 - Registrar, editar, eliminar y listar productos.
 - Buscar productos por nombre o categoría.
-- Mostrar alertas cuando el stock sea bajo.
 
 **Gestión de Clientes:**
 - Registrar, editar, eliminar y listar clientes.
@@ -144,7 +178,6 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 - Asignar productos a órdenes con descuento automático de stock.
 - Cambiar estado de órdenes.
 - Listar órdenes con filtros por estado, cliente o fechas.
-- Calcular precio total de la orden basándose en productos asignados.
 
 **Gestión de Inventario:**
 - Registrar automáticamente movimientos de inventario.
@@ -153,189 +186,118 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 
 **Autenticación:**
 - Validar credenciales y generar tokens JWT.
-- Cerrar sesiones automáticamente después de inactividad.
+- Proteger endpoints con middleware de autenticación.
 
 ### Requisitos No Funcionales:
 
-**Usabilidad:**
-- Interfaz intuitiva para personas no técnicas.
-- Mensajes de error claros y orientadores.
-
 **Rendimiento:**
-- Cargar páginas en menos de 2 segundos.
-- Búsquedas y filtros en menos de 1 segundo.
-- Soportar al menos 100 productos y 500 órdenes sin degradación.
+- Responder peticiones en menos de 2 segundos.
+- Soportar al menos 100 productos y 500 órdenes.
 
 **Seguridad:**
-- Encriptación de contraseñas.
-- Protección contra inyecciones SQL y ataques XSS.
-- Expiración automática de sesiones.
-
-**Disponibilidad:**
-- Funcionar en navegadores Chrome, Firefox y Edge actuales.
+- Encriptación de contraseñas con bcrypt.
+- Tokens JWT con expiración.
+- Validación de datos en el backend.
 
 **Mantenibilidad:**
-- Código documentado siguiendo buenas prácticas.
-- Utilizar Docker para facilitar el despliegue.
+- Código documentado y estructurado.
+- Uso de Docker para despliegue.
+- README con instrucciones claras.
 
-## 8. Definición del MVP
+## 9. Definición del MVP
 
 ### Funcionalidades Incluidas:
-- Autenticación de usuarios mediante JWT.
-- Rol de Administrador con acceso completo.
+- Autenticación JWT.
 - API REST con endpoints para:
   - CRUD completo de productos con búsqueda.
   - CRUD completo de clientes con búsqueda.
-  - Crear, listar y cambiar estado de órdenes de trabajo.
-  - Asignar productos a órdenes con descuento automático de stock.
-  - Consultar historial de órdenes.
-- MongoDB para persistencia de datos.
-- Redis para cachear GET /products.
-- Proyecto dockerizado con docker-compose.
-- README con instrucciones de ejecución.
+  - Crear, listar y cambiar estado de órdenes.
+  - Asignar productos a órdenes con descuento de stock.
+  - Consultar historial de órdenes y movimientos.
+- MongoDB para persistencia.
+- Redis para cache de productos.
+- Proyecto dockerizado.
 - Validaciones de reglas de negocio.
-- Registro automático de movimientos de inventario.
 
 ### Futuras Versiones:
-
-**Versión 2.0:**
-- Roles adicionales (Cliente, Vendedor).
-- Interfaz gráfica web responsive.
-- Dashboard con estadísticas y gráficos.
-- Reportes automáticos.
-- Sistema de alertas automáticas.
-
-**Versión 3.0:**
-- Notificaciones por correo o SMS.
+- Interfaz gráfica web.
+- Roles adicionales.
+- Dashboard y reportes.
+- Sistema de alertas.
 - Aplicación móvil.
-- Sistema de backup automático.
-- Gestión de cotizaciones.
-- Sistema de facturación.
 
-## 9. Lista Priorizada de Funcionalidades
+## 10. Lista Priorizada de Funcionalidades
 
 ### Prioridad Crítica (Imprescindible para MVP)
-1. Autenticación JWT para acceso seguro.
-2. Gestión completa de productos (CRUD).
-3. Control de stock con validación de negativos.
-4. Gestión completa de clientes (CRUD y búsqueda).
-5. Gestión de órdenes (crear, listar, cambiar estado).
-6. Registro de datos del vehículo en órdenes.
-7. Asignación de productos a órdenes con descuento de stock.
-8. Registro de detalle de productos por orden.
-9. Persistencia en MongoDB.
-10. Cacheo de productos con Redis.
-11. Proyecto dockerizado.
+1. Autenticación JWT.
+2. CRUD de productos con control de stock.
+3. CRUD de clientes con búsqueda.
+4. Crear y listar órdenes de trabajo.
+5. Cambiar estado de órdenes.
+6. Asignar productos a órdenes con descuento de stock.
+7. Registro automático de movimientos de inventario.
+8. Persistencia en MongoDB.
+9. Cache de productos en Redis.
+10. Proyecto dockerizado con documentación.
 
-### Prioridad Alta (Después del MVP)
-1. Búsqueda y filtros avanzados de órdenes.
-2. Historial completo de movimientos de inventario.
+### Prioridad Alta (Post-MVP)
+1. Filtros avanzados de órdenes.
+2. Cálculo automático de precio total.
 3. Sistema de alertas para stock bajo.
-4. Cálculo automático de precio total.
-5. Reportes básicos de órdenes y productos.
+4. Reportes básicos.
 
-### Prioridad Media (Mejoras a corto plazo)
-1. Interfaz gráfica web básica.
+### Prioridad Media
+1. Interfaz gráfica web.
 2. Dashboard con estadísticas.
-3. Gestión de proveedores.
-4. Exportación de datos a Excel/PDF.
-5. Sistema de respaldos periódicos.
+3. Exportación de datos.
 
-### Prioridad Baja (Mejoras a largo plazo)
-1. Reportes avanzados con gráficos.
-2. Sistema de notificaciones automáticas.
-3. Roles adicionales con permisos específicos.
-4. Portal para clientes.
-5. Aplicación móvil.
+### Prioridad Baja
+1. Roles adicionales.
+2. Notificaciones automáticas.
+3. Aplicación móvil.
 
-## 10. Flujos Principales del Sistema
+## 11. Flujos Principales del Sistema
 
-### 10.1. Autenticación de Usuario
+### 11.1. Autenticación
 1. Usuario ingresa credenciales.
-2. Sistema valida contra base de datos.
-3. Si son correctas, genera token JWT y otorga acceso.
-4. Si son incorrectas, muestra error y permanece en login.
+2. Sistema valida y genera token JWT.
+3. Token se usa para acceder a endpoints protegidos.
 
-### 10.2. Crear Producto
-1. Administrador completa formulario con datos del producto.
-2. Sistema valida campos obligatorios, precio mayor a cero y stock no negativo.
-3. Sistema guarda producto en BD.
-4. Sistema registra movimiento de inventario tipo "Entrada".
-5. Sistema actualiza cache en Redis.
-6. Muestra confirmación.
+### 11.2. Gestión de Productos
+**Crear:** Completar datos → Validar → Guardar en BD → Registrar movimiento entrada → Actualizar cache.
 
-### 10.3. Editar Producto
-1. Administrador selecciona producto y modifica datos.
-2. Sistema valida nuevos datos.
-3. Si cambió el stock, registra movimiento tipo "Ajuste".
-4. Sistema actualiza producto en BD y cache.
-5. Muestra confirmación.
+**Editar:** Modificar datos → Validar → Si cambia stock registrar ajuste → Actualizar BD y cache.
 
-### 10.4. Eliminar Producto
-1. Administrador selecciona producto para eliminar.
-2. Sistema verifica que no esté en órdenes existentes.
-3. Sistema solicita confirmación.
-4. Si confirma, elimina producto de BD y actualiza cache.
-5. Si está en órdenes, muestra error y cancela operación.
+**Eliminar:** Seleccionar producto → Verificar no esté en órdenes → Confirmar → Eliminar → Actualizar cache.
 
-### 10.5. Registrar Cliente
-1. Administrador completa formulario con nombre, teléfono y correo opcional.
-2. Sistema valida formatos.
-3. Sistema guarda cliente con fecha de registro.
-4. Muestra confirmación.
+### 11.3. Gestión de Clientes
+**Crear:** Completar datos → Validar formato → Guardar con fecha de registro.
 
-### 10.6. Crear Orden de Trabajo
-1. Administrador selecciona o crea cliente.
-2. Completa datos del vehículo y descripción del trabajo.
-3. Ingresa fecha de entrega estimada.
-4. Sistema valida datos obligatorios y fechas.
-5. Sistema crea orden en estado "Pendiente" con fecha actual.
-6. Muestra confirmación con ID de orden.
+**Eliminar:** Verificar no tenga órdenes → Confirmar → Eliminar.
 
-### 10.7. Asignar Productos a Orden
-1. Administrador abre orden y busca producto.
-2. Especifica cantidad a asignar.
-3. Sistema verifica stock suficiente.
-4. Si hay stock, registra detalle de orden con precio actual.
-5. Sistema descuenta stock y registra movimiento "Salida".
-6. Sistema recalcula precio total de orden.
-7. Muestra confirmación o error si no hay stock.
+### 11.4. Gestión de Órdenes
+**Crear:** Seleccionar cliente → Ingresar datos vehículo y trabajo → Validar → Crear en estado Pendiente.
 
-### 10.8. Cambiar Estado de Orden
-1. Administrador selecciona orden y nuevo estado.
-2. Si marca "Completada", sistema registra fecha de finalización.
-3. Sistema actualiza estado.
-4. Muestra confirmación.
+**Asignar Productos:** Buscar producto → Especificar cantidad → Verificar stock → Descontar stock → Registrar detalle → Actualizar precio total.
 
-### 10.9. Consultar Historial
-1. Administrador selecciona cliente u orden.
-2. Sistema muestra todas las órdenes o movimientos relacionados ordenados por fecha.
-3. Administrador puede ver detalle completo.
+**Cambiar Estado:** Seleccionar orden → Cambiar a nuevo estado → Si es Completada registrar fecha finalización.
 
-## 11. Modelo de Datos
+## 12. Modelo de Datos
 
 ### Relaciones:
-- Un Cliente tiene múltiples Órdenes de Trabajo (1:N).
-- Una Orden de Trabajo pertenece a un Cliente (N:1).
-- Una Orden de Trabajo tiene múltiples Detalles de Orden (1:N).
-- Un Detalle de Orden referencia a un Producto (N:1).
-- Un Producto tiene múltiples Movimientos de Inventario (1:N).
+- Cliente (1) → Órdenes de Trabajo (N)
+- Orden de Trabajo (1) → Detalles de Orden (N)
+- Detalle de Orden (N) → Producto (1)
+- Producto (1) → Movimientos de Inventario (N)
 
-## 12. Consideraciones Técnicas
+## 13. Consideraciones Técnicas
 
 ### Stack Tecnológico:
 - Backend: Node.js con Express
 - Base de Datos: MongoDB
 - Cache: Redis
-- Autenticación: JWT
-- Encriptación: bcrypt
+- Autenticación: JWT con bcrypt
 - Containerización: Docker y docker-compose
-
-### Arquitectura:
-- Patrón: API REST
-- Estructura: Controladores, Servicios, Modelos
-- Validaciones: En capa de servicio
-- Manejo de Errores: Middleware centralizado
 
 ### Endpoints Principales:
 
@@ -344,12 +306,12 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 - POST /api/auth/logout
 
 **Productos:**
-- GET /api/products (con cache Redis)
+- GET /api/products (cache Redis)
 - GET /api/products/:id
 - POST /api/products
 - PUT /api/products/:id
 - DELETE /api/products/:id
-- GET /api/products/search?q=nombre
+- GET /api/products/search?q=
 
 **Clientes:**
 - GET /api/clients
@@ -357,7 +319,7 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 - POST /api/clients
 - PUT /api/clients/:id
 - DELETE /api/clients/:id
-- GET /api/clients/search?q=nombre
+- GET /api/clients/search?q=
 - GET /api/clients/:id/orders
 
 **Órdenes:**
@@ -366,24 +328,52 @@ La necesidad es crear un sistema digital que automatice estos registros y permit
 - POST /api/orders
 - PUT /api/orders/:id/status
 - POST /api/orders/:id/products
-- GET /api/orders/filter?status=...&client=...
+- GET /api/orders?status=&client=
 
 **Inventario:**
 - GET /api/inventory/movements/:productId
-- POST /api/inventory/adjust
 
-## 13. Checklist del Proyecto
+## 14. Cronograma Sugerido (4 semanas)
+
+### Semana 1:
+- Configuración inicial del proyecto.
+- Docker y docker-compose.
+- Conexión MongoDB y Redis.
+- Autenticación JWT.
+- CRUD de productos.
+
+### Semana 2:
+- CRUD de clientes.
+- Búsquedas y filtros.
+- Cache de productos en Redis.
+
+### Semana 3:
+- Gestión de órdenes de trabajo.
+- Asignación de productos a órdenes.
+- Movimientos de inventario.
+
+### Semana 4:
+- Validaciones completas.
+- Pruebas de integración.
+- Documentación.
+- Ajustes finales.
+
+## 15. Checklist del Proyecto
 
 - [ ] Grupo formado (3-4 integrantes) y listado en README.
 - [ ] REQUERIMIENTOS.md completo.
-- [ ] Issues creados y asignados a integrantes.
-- [ ] Branching: main y develop presentes.
+- [ ] Issues creados y asignados.
+- [ ] Branching: main y develop.
 - [ ] Al menos 5 commits descriptivos en develop.
-- [ ] Proyecto dockerizado con docker-compose funcional.
+- [ ] Docker y docker-compose funcional.
 - [ ] README con instrucciones de ejecución.
-- [ ] API REST con todos los endpoints del MVP.
 - [ ] Autenticación JWT implementada.
+- [ ] CRUD de productos completo.
+- [ ] CRUD de clientes completo.
+- [ ] Gestión de órdenes implementada.
+- [ ] Asignación de productos a órdenes funcional.
+- [ ] Movimientos de inventario automáticos.
+- [ ] MongoDB configurado.
+- [ ] Redis cache funcionando.
 - [ ] Validaciones de reglas de negocio.
-- [ ] MongoDB configurado y funcionando.
-- [ ] Redis configurado para cache de productos.
-- [ ] Pruebas básicas de endpoints.
+- [ ] API documentada (Postman/Swagger).
