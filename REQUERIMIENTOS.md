@@ -69,7 +69,7 @@ Movimientos Inventario:
  - Fecha de movimiento
  - Descripción
 
-## 6. Reglas del Negocio
+## 6. Reglas del Negocio importantes
 
 ### 1. Usuarios y Roles
 - Solo existe el rol **Administrador** con acceso completo.
